@@ -4,6 +4,10 @@ import java.util.Timer;
 
 public class Main {
     public static void main(String[] args) {
+        double[] arr = randarr(10, true);
+
+        percentageSorted(arr);
+        /*
         float result1 = 0;
         float result2 = 0;
         float result3 = 0;
@@ -25,6 +29,7 @@ public class Main {
         System.out.println("Linearsearch 1000 x 10 avg time: " + (result3 / 1000) + " microseconds");
         System.out.println("Binarysearch 1000 x 10 avg time: " + (result4 / 1000) + " microseconds");
         System.out.println("Bogosort 10 x 20 avg time: " + (result5 / 1000) + " microseconds");
+        */
     }
 
     public static double[] randarr(int num, boolean doRound) {
@@ -86,5 +91,21 @@ public class Main {
                 return 0f;
             }
         }
+    }
+
+    public static void percentageSorted(double[] arr) {
+        boolean[] correctlyPlaced = new boolean[arr.length];
+        int placedCorrectly = 1;  // Start with 1 to account for the first element
+
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i - 1] <= arr[i]) {
+                correctlyPlaced[i] = true;
+                placedCorrectly++;
+            }
+        }
+
+        int result = (int) ((double) placedCorrectly / arr.length * 100);
+        System.out.println("The array is: " + result + "% correctly sorted");
     }
 }
