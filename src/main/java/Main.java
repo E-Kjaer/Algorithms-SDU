@@ -6,7 +6,8 @@ public class Main {
     public static void main(String[] args) {
         double[] arr = randarr(10, true);
 
-        percentageSorted(arr);
+        System.out.println("The array is: " + calculateSortPercentage(arr) + "% correctly solved");
+
         /*
         float result1 = 0;
         float result2 = 0;
@@ -93,19 +94,21 @@ public class Main {
         }
     }
 
-    public static void percentageSorted(double[] arr) {
-        boolean[] correctlyPlaced = new boolean[arr.length];
-        int placedCorrectly = 1;  // Start with 1 to account for the first element
+    public static double calculateSortPercentage(double[] arr) {
+        if(arr.length <= 1) {
+            return 100;
+        }
 
+        int sortedCount = 0;
 
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1] <= arr[i]) {
-                correctlyPlaced[i] = true;
-                placedCorrectly++;
+        for(int i = 0; i < arr.length -1; i++) {
+            if(arr[i] <= arr[i+1]) {
+             sortedCount++;
             }
         }
 
-        int result = (int) ((double) placedCorrectly / arr.length * 100);
-        System.out.println("The array is: " + result + "% correctly sorted");
+        double percantage = (double) sortedCount / (arr.length) * 100;
+
+        return percantage;
     }
 }
