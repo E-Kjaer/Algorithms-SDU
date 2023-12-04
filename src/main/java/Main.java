@@ -107,8 +107,6 @@ public class Main {
             }
         }
 
-        double percantage = (double) sortedCount / (arr.length) * 100;
-
-        return percantage;
+        return (double) sortedCount / (arr.length) * 100;
     }
 }
